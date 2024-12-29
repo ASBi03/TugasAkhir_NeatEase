@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/TugasAkhir_NeatEase/static/css/main.b715bac2.css",
-    "main.js": "/TugasAkhir_NeatEase/static/js/main.2f098c3a.js",
+    "main.js": "/TugasAkhir_NeatEase/static/js/main.663c88f7.js",
     "static/media/Editicon.webp": "/TugasAkhir_NeatEase/static/media/Editicon.534f65211112ce5b018a.webp",
     "index.html": "/TugasAkhir_NeatEase/index.html",
     "main.b715bac2.css.map": "/TugasAkhir_NeatEase/static/css/main.b715bac2.css.map",
-    "main.2f098c3a.js.map": "/TugasAkhir_NeatEase/static/js/main.2f098c3a.js.map"
+    "main.663c88f7.js.map": "/TugasAkhir_NeatEase/static/js/main.663c88f7.js.map"
   },
   "entrypoints": [
     "static/css/main.b715bac2.css",
-    "static/js/main.2f098c3a.js"
+    "static/js/main.663c88f7.js"
   ]
 }
