@@ -2,7 +2,7 @@
   "name": "neatease-task",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://asbi03.github.io/ProjekAkhir_NeatEase",
+  "homepage": "https://asbi03.github.io/TugasAkhir_NeatEase",
   "dependencies": {
     "cra-template": "1.2.0",
     "react": "^19.0.0",

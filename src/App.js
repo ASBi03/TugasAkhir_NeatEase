@@ -39,7 +39,7 @@ const toggleTaskCompletion = (index) => {
     <Router>
       <Navibar />
       <Routes>
-        <Route path="/ProjekAkhir_NeatEase" element={<NeatEase />}/>
+        <Route path="/TugasAkhir_NeatEase" element={<NeatEase />}/>
         <Route path="/TaskList" element={<TaskList tasks={tasks} deleteTask={deleteTask} toggleTaskCompletion={toggleTaskCompletion} />} />
         <Route path="/AddTask" element={<AddTask addTask={addTask} />} />
       </Routes>
