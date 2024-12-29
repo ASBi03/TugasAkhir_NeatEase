@@ -30,7 +30,7 @@ const App = () => {
 
 const toggleTaskCompletion = (index) => {
   const updatedTasks = tasks.map((task, i) =>
-  i === index ? { ...task, completed: !task.completed } : tasks
+  i === index ? { ...task, completed: !task.completed } : task
   );
   setTasks(updatedTasks);
 };
