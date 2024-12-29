@@ -6,7 +6,14 @@ import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
 
 const App = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTask = (task) => {
     setTasks((prevTasks) => {
@@ -21,19 +28,19 @@ const App = () => {
     setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index));
   };
 
-  useEffect(() => {
-    const savedTasks = localStorage.getItem("tasks");
-    if (savedTasks) {
-        setTasks(JSON.parse(savedTasks)); // Parse data dari string ke array
-    }
-}, []);
+const toggleTaskCompletion = (index) => {
+  const updatedTasks = tasks.map((task, i) =>
+  i === index ? { ...task, completed: !task.completed } : tasks
+  );
+  setTasks(updatedTasks);
+};
 
   return (
     <Router>
       <Navibar />
       <Routes>
         <Route path="/ProjekAkhir_NeatEase" element={<NeatEase />}/>
-        <Route path="/TaskList" element={<TaskList tasks={tasks} deleteTask={deleteTask} />} />
+        <Route path="/TaskList" element={<TaskList tasks={tasks} deleteTask={deleteTask} toggleTaskCompletion={toggleTaskCompletion} />} />
         <Route path="/AddTask" element={<AddTask addTask={addTask} />} />
       </Routes>
     </Router>

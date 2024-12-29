@@ -3,19 +3,11 @@ import del from "./Del.png";
 import edit from "./Editicon.webp";
 import { Link } from "react-router-dom";
 
-const TaskList = ({ tasks, deleteTask }) => {
+const TaskList = ({ tasks, deleteTask, toggleTaskCompletion }) => {
   const [taskList, setTaskList] = useState(tasks);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "ascending"});
-  const [checkedTasks, setCheckedTasks] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
-
-  const handleCheckboxChange = (index) => {
-    setCheckedTasks((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index],
-    }));
-  };
 
   const handleSort = (key) => {
     const direction =
@@ -82,6 +74,7 @@ const TaskList = ({ tasks, deleteTask }) => {
               <th className="py-2 px-4 border-r-2 border-yellow-600">Category</th>
               <th className="py-2 px-4 border-r-2 border-yellow-600">Created at</th>
               <th className="py-2 px-4 border-r-2 border-yellow-600">Deadline</th>
+              <th className="py-2 px-4 border-r-2 border-yellow-600">Completed</th>
               <th className="py-2 px-4">Action</th>
             </tr>
           </thead>
@@ -94,18 +87,20 @@ const TaskList = ({ tasks, deleteTask }) => {
                 <td className="py-2 px-4 border-r-2 border-yellow-600">{task.category}</td>
                 <td className="py-2 px-4 border-r-2 border-yellow-600">{task.createdAt}</td>
                 <td className="py-2 px-4 border-r-2 border-yellow-600">{task.deadline}</td>
-                <td className="py-2 px-4">
-                  <input
-                    type="checkbox"
-                    checked={checkedTasks[index] || false}
-                    onChange={() => handleCheckboxChange(index)}
+                <td className="py-2 px-4 border-r-2 border-yellow-600">
+                  <input 
+                    type ="checkbox"
+                    checked={task.completed}
+                    onChange={() => toggleTaskCompletion(index)}
                   />
+                  </td>
+                <td className="py-2 px-4">
                   <button
-                    onClick={() => openPopup(task, index)} className="ml-5 w-4">
-                      <img src={edit} alt="Delete" className="w-4"/>
+                    onClick={() => openPopup(task, index)} className="mr-2 w-4">
+                      <img src={edit} alt="Edit" className="w-4"/>
                   </button>
                   <button
-                    onClick={() => deleteTask(index)} className="ml-5 w-4">
+                    onClick={() => deleteTask(index)} className="ml-2 w-4">
                       <img src={del} alt="Delete" className="w-4"/>
                   </button>
                 </td>

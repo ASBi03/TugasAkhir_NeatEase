@@ -10,7 +10,7 @@ const AddTask = ({ addTask }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (task.trim() && category.trim() && createdAt.trim() && deadline.trim()) {
-            addTask({ task, category, createdAt, deadline });
+            addTask({ task, category, createdAt, deadline, completed: false });
             setTask('');
             setCategory('');
             setCreatedAt('');
